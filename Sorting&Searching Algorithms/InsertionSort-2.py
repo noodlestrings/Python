@@ -1,6 +1,11 @@
 # DUPLICATE DATA WILL NOT RETURN DUPLICATED SORT
 # print comments for debugging
-primArr = [8, 3, 1, 5, 4, 97, 19, 1]
+primArr = input("Enter a series of numbers to be sorted: ")
+primArr = primArr.split()
+for index, value in enumerate(primArr):
+    primArr[index] = int(value)
+
+#primArr = [25, 16, 4, 3, 7]
 origPrimArr = str(primArr)
 sortedArr = ['placeholder']
 sortedArr[0] = primArr[0]
