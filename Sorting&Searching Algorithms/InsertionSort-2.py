@@ -1,4 +1,6 @@
-primArr = [5, 4, 3, 1, 15, 9, 7, 6]
+# DUPLICATE DATA WILL NOT RETURN DUPLICATED SORT
+# print comments for debugging
+primArr = [8, 3, 1, 5, 4, 97, 19, 1]
 origPrimArr = str(primArr)
 sortedArr = ['placeholder']
 sortedArr[0] = primArr[0]
