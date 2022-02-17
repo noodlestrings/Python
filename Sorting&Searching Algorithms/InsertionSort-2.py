@@ -1,11 +1,10 @@
-# DUPLICATE DATA WILL NOT RETURN DUPLICATED SORT
-# print comments for debugging
+# DUPLICATE DATA WILL BE INSERTED ADJACENT
 primArr = input("Enter a series of numbers to be sorted: ")
 primArr = primArr.split()
 for index, value in enumerate(primArr):
     primArr[index] = int(value)
 
-#primArr = [25, 16, 4, 3, 7]
+#primArr = [1, 6, 48, 3, 2, 9, 6, 43]
 origPrimArr = str(primArr)
 sortedArr = ['placeholder']
 sortedArr[0] = primArr[0]
@@ -16,13 +15,9 @@ condition1 = False
 incrementBool1 = False
 i1 = 0
 while condition1 == False:  # FOR INSERTING BEFORE FIRST VALUE
-    #print(sortedArr, "sorted    ", primArr, "prim")
-    #print(f"comparing {primArr[i1]}")
     if primArr[i1] < sortedArr[0]:
-        #print(f"{primArr[i1]} < {sortedArr[0]}")
         sortedArr.insert(0, primArr[i1])
         primArr.pop(i1)
-        #print(sortedArr, "sorted    ", primArr, "prim\n\n")
     else:
         incrementBool1 = True
     if i1 == len(primArr) - 1:
@@ -47,14 +42,15 @@ while condition2 == False:  # FOR INSERTING AFTER LAST VALUE
     if incrementBool2:
         i2 += 1
 
-for primIndex, primValue in enumerate(primArr):
-    #print(sortedArr, "sorted     ", primArr, "prim")
-    for sortedIndex in range(1, len(sortedArr) - 1):
-        # print(
-        #    f"comparing {primValue} > {sortedArr[sortedIndex - 1]} \ncomparing {primValue} < {sortedArr[sortedIndex + 1]}\n")
-        if primValue > sortedArr[sortedIndex - 1] and primValue < sortedArr[sortedIndex + 1]:
-            sortedArr.insert(sortedIndex + 1, primValue)
-            #print("inserted, next value is", primArr[primIndex + 1])
+for primValue in primArr:
+    for sortedIndex in range(1, len(sortedArr)):
+        #zlower = sortedArr[sortedIndex - 1]
+        #zupper = sortedArr[sortedIndex]
+        if primValue == sortedArr[sortedIndex]:
+            sortedArr.insert(sortedIndex, primValue)
+            break
+        if primValue > sortedArr[sortedIndex - 1] and primValue < sortedArr[sortedIndex]:
+            sortedArr.insert(sortedIndex, primValue)
             break
 
 
