@@ -7,7 +7,7 @@ for index, value in enumerate(primArr):
     primArr[index] = int(value)
 
 #primArr = [1, 6, 48, 3, 2, 9, 6, 43]
-origPrimArr = str(primArr)
+origPrimArr = primArr.copy()
 sortedArr = ['placeholder']
 sortedArr[0] = primArr[0]
 primArr.pop(0)
