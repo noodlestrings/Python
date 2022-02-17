@@ -53,3 +53,5 @@ a = [1, 2, 3, 4, 5]
 b = [i**2 for i in a]  # list comprehension, inline for loops
 # comprehended_list = [expression FOR value IN list]
 ###################################################################
+countlist = ["a", "a", "a", 5, 6, 6, 6, 7]
+print(countlist.count("a"))   # finds number of occurunces of param
