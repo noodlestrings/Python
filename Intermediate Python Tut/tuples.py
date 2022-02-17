@@ -20,3 +20,17 @@ if "sam" in mytuple3:
 else:
     print("no")
 ######################################################
+print(mytuple3.count("sam"))
+print(mytuple3.index("sam"))  # returns first index of occurence of param
+################################################
+name, age, city = mytuple3  # assignment must account for all elements in tuple
+print(name)
+print(age)
+print(city)
+####################################################################
+mytuple4 = (0, 1, 2, 3, 4)
+i1, *i2, i3 = mytuple4
+print(i1)  # first item
+print(i3)  # last item
+print(i2)  # everything between start and end casted to list
+######################################################################

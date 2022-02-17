@@ -55,3 +55,4 @@ b = [i**2 for i in a]  # list comprehension, inline for loops
 ###################################################################
 countlist = ["a", "a", "a", 5, 6, 6, 6, 7]
 print(countlist.count("a"))   # finds number of occurunces of param
+print(countlist.index(5))    # finds index of param
