@@ -45,4 +45,11 @@ list_copy = list_org
 list_copy.append(69)
 print(list_org, list_copy)  # the change will be made on both lists
 
-list_copy = list_org.copy()  # copys list, also copies by typecasting to list
+list_copy = list_org.copy()  # copys list
+list_copy = list(list_org)   # copys list
+list_copy = list_org[:]      # copys list
+###################################################################
+a = [1, 2, 3, 4, 5]
+b = [i**2 for i in a]  # list comprehension, inline for loops
+# comprehended_list = [expression FOR value IN list]
+###################################################################
