@@ -1,4 +1,6 @@
 # DUPLICATE DATA WILL BE INSERTED ADJACENT
+# CREATE FUNCTIONS FOR EACH PART OF SORT
+
 primArr = input("Enter a series of numbers to be sorted: ")
 primArr = primArr.split()
 for index, value in enumerate(primArr):
