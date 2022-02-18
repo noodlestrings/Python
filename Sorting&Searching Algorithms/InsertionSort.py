@@ -1,12 +1,12 @@
 # DUPLICATE DATA WILL BE INSERTED ADJACENT
 # CREATE FUNCTIONS FOR EACH PART OF SORT
 
-primArr = input("Enter a series of numbers to be sorted: ")
-primArr = primArr.split()
-for index, value in enumerate(primArr):
-    primArr[index] = int(value)
+# primArr = input("Enter a series of numbers to be sorted: ")
+# primArr = primArr.split()
+# for index, value in enumerate(primArr):
+#     primArr[index] = int(value)
 
-#primArr = [1, 6, 48, 3, 2, 9, 6, 43]
+primArr = [14, 5, 62, 7, 4]
 origPrimArr = primArr.copy()
 sortedArr = ['placeholder']
 sortedArr[0] = primArr[0]
@@ -22,7 +22,7 @@ while condition1 == False:  # FOR INSERTING BEFORE FIRST VALUE
         primArr.pop(i1)
     else:
         incrementBool1 = True
-    if i1 == len(primArr) - 1:
+    if i1 == len(primArr):
         condition1 = True
 
     if incrementBool1:
