@@ -1,12 +1,10 @@
-# DUPLICATE DATA WILL BE INSERTED ADJACENT
-# CREATE FUNCTIONS FOR EACH PART OF SORT
 
-# primArr = input("Enter a series of numbers to be sorted: ")
-# primArr = primArr.split()
-# for index, value in enumerate(primArr):
-#     primArr[index] = int(value)
+primArr = input("Enter a series of numbers to be sorted: ")
+primArr = primArr.split()
+for index, value in enumerate(primArr):
+    primArr[index] = int(value)
 
-primArr = [123808, 27110775, 31917616]
+#primArr = [5, 32, 2346, 346, 4, 3243, 3, 3, 223]
 origPrimArr = primArr.copy()
 sortedArr = ['placeholder']
 sortedArr[0] = primArr[0]
