@@ -6,7 +6,7 @@
 # for index, value in enumerate(primArr):
 #     primArr[index] = int(value)
 
-primArr = [14, 5, 62, 7, 4]
+primArr = [777, 5, 4442, 45, 4576]
 origPrimArr = primArr.copy()
 sortedArr = ['placeholder']
 sortedArr[0] = primArr[0]
@@ -14,15 +14,15 @@ primArr.pop(0)
 
 
 condition1 = False
-incrementBool1 = False
 i1 = 0
 while condition1 == False:  # FOR INSERTING BEFORE FIRST VALUE
+    incrementBool1 = False
     if primArr[i1] < sortedArr[0]:
         sortedArr.insert(0, primArr[i1])
         primArr.pop(i1)
     else:
         incrementBool1 = True
-    if i1 == len(primArr):
+    if i1 == len(primArr) - 1:
         condition1 = True
 
     if incrementBool1:
