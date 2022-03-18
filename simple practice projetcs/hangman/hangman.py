@@ -2,7 +2,7 @@ import random
 import time
 
 with open(
-    r"C:\Users\Sam\Documents\Programming\Python\simple practice projetcs\hangman\words.txt",
+    r"C:\Users\Sam\Documents\Programming\Python GIT REPO\simple practice projetcs\hangman\words.txt",
     "r+",
 ) as word_file:
     rand_num = random.randint(0, 100)
