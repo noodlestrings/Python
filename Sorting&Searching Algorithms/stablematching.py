@@ -1,5 +1,10 @@
+from ast import Pass
+from operator import indexOf
+
+
 teachers = [['a'], ['b'], ['c'], ['d'], ['e']]
 students = [['1'], ['2'], ['3'], ['4'], ['5']]
+matches = []
 
 
 def get_insert_index(array, targetName):
@@ -17,9 +22,8 @@ for i in range(len(students)):
             studVoting = input(
                 f"Student {students[i][0]}, please enter the name of the teacher you want to vote for: ")
             getindex = get_insert_index(teachers, studVoting.lower())
-            index1 = getindex[0]
-            index2 = getindex[1]
-            teachers[index1].append(students[i][0])
+            index = getindex[0]
+            teachers[index].append(students[i][0])
             print("Vote counted")
             break
         except UnboundLocalError:
@@ -33,9 +37,8 @@ for i in range(len(teachers)):
             teachVoting = input(
                 f"Teacher {students[i][0]}, please enter the name of the student you want to vote for: ")
             getindex = get_insert_index(students, teachVoting.lower())
-            index1 = getindex[0]
-            index2 = getindex[1]
-            students[index1].append(teachers[i][0])
+            index = getindex[0]
+            students[index].append(teachers[i][0])
             print("Vote counted")
             break
         except UnboundLocalError:
@@ -49,6 +52,4 @@ print(f"teachers : {teachers}\nstudents : {students}")
 # teachers : [['a', '1'], ['b', '2'], ['c', '3', '4'], ['d', '5'], ['e']]
 # students : [['1', 'a', 'e'], ['2', 'b'], ['3', 'c'], ['4'], ['5', 'd']]
 
-for teacher in teachers:
-    for student in students:
-        teacherVotes = teacher[1:len(teacher)]
+#COMPARING AND FINDING MATCHES NOT DONE
