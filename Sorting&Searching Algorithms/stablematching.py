@@ -81,11 +81,27 @@ for teacherIndex, teacher in enumerate(teachers):
             teachers[teacherIndex] = []
 teachersRemaining = list(filter(None, teachers))
 
-print(
-    f"students remaining:{studentsRemaining}\nteachers remaining:{teachersRemaining}\nmatches:{matches}")
+# print(
+#    f"students remaining:{studentsRemaining}\nteachers remaining:{teachersRemaining}\nmatches:{matches}")
 
 # students remaining:[['2', 'd'], ['3', 'b']]
 # teachers remaining:[['b', '2'], ['d']]
 # matches:[['1', 'a'], ['4', 'c'], ['5', 'e']]
 
+for student in studentsRemaining:
+    for innerStudent in student[1:]:
+        for teacher in teachersRemaining:
+            if innerStudent == teacher[0]:
+                nonMutualMatches.append([student[0], teacher[0]])
+#print("non mutual matches:", nonMutualMatches)
 
+print("\nThese matches include teachers and students who voted for each other:")
+for x in range(len(matches)):
+
+    print(
+        f"Student {matches[x][0]} is matched with Teacher {matches[x][1]}")
+
+print("\nThese matches are non-mutual matches (where only one party has voted for the other or no parties have voted for each other):")
+for x in range(len(nonMutualMatches)):
+    print(
+        f"Student {nonMutualMatches[x][0]} is matched with Teacher {nonMutualMatches[x][1]}")
