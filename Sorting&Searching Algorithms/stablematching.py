@@ -2,6 +2,7 @@ teachers = [['a'], ['b'], ['c'], ['d'], ['e']]
 students = [['1'], ['2'], ['3'], ['4'], ['5']]
 matches = []
 nonMutualMatches = []
+leftOver = []
 
 
 def get_insert_index(array, targetName):
@@ -13,95 +14,98 @@ def get_insert_index(array, targetName):
     return [masterLocation, subLocation]
 
 
-for i in range(len(students)):
-    while True:
-        try:
-            studVoting = input(
-                f"Student {students[i][0]}, please enter the name of the teacher you want to vote for: ")
-            getindex = get_insert_index(teachers, studVoting.lower())
-            index = getindex[0]
-            teachers[index].append(students[i][0])
-            print("Vote counted")
-            break
-        except UnboundLocalError:
-            print(
-                f"That was not the name of a teacher.")
-print("\n")
+def remove_teachers(matches, teachers):
+    for match in matches:
+        for teacher in teachers:
+            if teacher[0] in match:
+                teachers.remove(teacher)
 
-for i in range(len(teachers)):
-    while True:
-        try:
-            teachVoting = input(
-                f"Teacher {students[i][0]}, please enter the name of the student you want to vote for: ")
-            getindex = get_insert_index(students, teachVoting.lower())
-            index = getindex[0]
-            students[index].append(teachers[i][0])
-            print("Vote counted")
-            break
-        except UnboundLocalError:
-            print(
-                f"That was not the name of a student.")
 
-print(f"teachers : {teachers}\nstudents : {students}")
-
-# test data: a b c c e 1 3 4 2 5
-
-# students : [['1', 'a', 'e'], ['2', 'b'], ['3', 'c'], ['4'], ['5', 'd']]
-# teachers : [['a', '1'], ['b', '2'], ['c', '3', '4'], ['d', '5'], ['e']]
-# matches: [['1', 'a'], ['4', 'c'], ['5', 'e']]
-
-for teacher in teachers:
-    temp = []
-    teachmatches = []
-    for teachersVotes in teacher[1:]:
-        temp.append(teachersVotes)
-        teachmatches = temp.copy()
+def remove_students(matches, students):
+    for match in matches:
         for student in students:
-            studtemp = []
-            studmatches = []
-            for studentVotes in student:
-                studtemp.append(studentVotes)
-                studmatches = studtemp.copy()
-                if student[0] in teachmatches and teacher[0] in studmatches:
-                    studteachmatches = [student[0], teacher[0]]
-                    matches.append(studteachmatches)
-                    break
-print(f"These are the matches: {matches}")
+            if student[0] == match[0]:
+                students.remove(student)
 
 
-for studentIndex, student in enumerate(students):
-    for match in matches:
-        if match[0] == student[0]:
-            students[studentIndex] = []
-studentsRemaining = list(filter(None, students))
+while len(teachers) >= 1 and len(students) >= 1:
+    for i in range(len(students)):
+        while True:
+            try:
+                studVoting = input(
+                    f"Student {students[i][0]}, please enter the name of the teacher you want to vote for: ")
+                getindex = get_insert_index(teachers, studVoting.lower())
+                index = getindex[0]
+                teachers[index].append(students[i][0])
+                print("Vote counted")
+                break
+            except UnboundLocalError:
+                print(
+                    f"That was not the name of a teacher.")
+    print("\n")
 
-for teacherIndex, teacher in enumerate(teachers):
-    for match in matches:
-        if match[1] == teacher[0]:
-            teachers[teacherIndex] = []
-teachersRemaining = list(filter(None, teachers))
+    for i in range(len(teachers)):
+        while True:
+            try:
+                teachVoting = input(
+                    f"Teacher {students[i][0]}, please enter the name of the student you want to vote for: ")
+                getindex = get_insert_index(students, teachVoting.lower())
+                index = getindex[0]
+                students[index].append(teachers[i][0])
+                print("Vote counted")
+                break
+            except UnboundLocalError:
+                print(
+                    f"That was not the name of a student.")
 
-# print(
-#    f"students remaining:{studentsRemaining}\nteachers remaining:{teachersRemaining}\nmatches:{matches}")
+    for student in students:
+        studentVote = student[1:]
+        for teacher in teachers:
+            for vote in studentVote:
+                if vote in teacher and student[0] in teacher:
+                    matches.append([student[0], teacher[0]])
 
-# students remaining:[['2', 'd'], ['3', 'b']]
-# teachers remaining:[['b', '2'], ['d']]
-# matches:[['1', 'a'], ['4', 'c'], ['5', 'e']]
+    remove_teachers(matches, teachers)
 
-for student in studentsRemaining:
-    for innerStudent in student[1:]:
-        for teacher in teachersRemaining:
-            if innerStudent == teacher[0]:
-                nonMutualMatches.append([student[0], teacher[0]])
-#print("non mutual matches:", nonMutualMatches)
+    remove_students(matches, students)
 
+    for student in students:
+        for teacher in teachers:
+            for vote in student[1:]:
+                if vote == teacher[0]:
+                    nonMutualMatches.append([student[0], teacher[0]])
+                    remove_teachers(nonMutualMatches, teachers)
+                    remove_students(nonMutualMatches, students)
+
+    for teacher in teachers:
+        for student in students:
+            for vote in teacher[1:]:
+                if vote == student[0]:
+                    nonMutualMatches.append([student[0], teacher[0]])
+                    remove_teachers(nonMutualMatches, teachers)
+                    remove_students(nonMutualMatches, students)
+
+    if len(teachers) < 1 and len(students) < 1:
+        continue
+
+    for index, student in enumerate(students):
+        leftOver.append([student[0], teachers[index][0]])
+    teachers.clear()
+    students.clear()
+
+
+# outside of while loop
 print("\nThese matches include teachers and students who voted for each other:")
 for x in range(len(matches)):
 
     print(
         f"Student {matches[x][0]} is matched with Teacher {matches[x][1]}")
 
-print("\nThese matches are non-mutual matches (where only one party has voted for the other or no parties have voted for each other):")
+print("\nThese matches are non-mutual matches (where only one party has voted for the other):")
 for x in range(len(nonMutualMatches)):
     print(
         f"Student {nonMutualMatches[x][0]} is matched with Teacher {nonMutualMatches[x][1]}")
+
+print("\nHere are the remaining that did not vote for each other but have been assigned to each other: ")
+for x in range(len(leftOver)):
+    print(f"Student {leftOver[x][0]} is matched with Teacher {leftOver[x][1]}")
