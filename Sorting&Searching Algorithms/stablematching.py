@@ -95,17 +95,18 @@ while len(teachers) >= 1 and len(students) >= 1:
 
 
 # outside of while loop
-print("\nThese matches include teachers and students who voted for each other:")
-for x in range(len(matches)):
+if len(matches) > 0:
+    print("\nThese matches include teachers and students who voted for each other:")
+    for x in range(len(matches)):
 
-    print(
-        f"Student {matches[x][0]} is matched with Teacher {matches[x][1]}")
-
-print("\nThese matches are non-mutual matches (where only one party has voted for the other):")
-for x in range(len(nonMutualMatches)):
-    print(
-        f"Student {nonMutualMatches[x][0]} is matched with Teacher {nonMutualMatches[x][1]}")
-
-print("\nHere are the remaining that did not vote for each other but have been assigned to each other: ")
-for x in range(len(leftOver)):
-    print(f"Student {leftOver[x][0]} is matched with Teacher {leftOver[x][1]}")
+        print(
+            f"Student {matches[x][0]} is matched with Teacher {matches[x][1]}")
+if len(nonMutualMatches) > 0:
+    print("\nThese matches are non-mutual matches (where only one party has voted for the other):")
+    for x in range(len(nonMutualMatches)):
+        print(
+            f"Student {nonMutualMatches[x][0]} is matched with Teacher {nonMutualMatches[x][1]}")
+if len(leftOver) > 0:
+    print("\nHere are the remaining that did not vote for each other but have been assigned to each other: ")
+    for x in range(len(leftOver)):
+        print(f"Student {leftOver[x][0]} is matched with Teacher {leftOver[x][1]}")
