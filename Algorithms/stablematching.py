@@ -48,7 +48,7 @@ while len(teachers) >= 1 and len(students) >= 1:
         while True:
             try:
                 teachVoting = input(
-                    f"Teacher {students[i][0]}, please enter the name of the student you want to vote for: ")
+                    f"Teacher {teachers[i][0]}, please enter the name of the student you want to vote for: ")
                 getindex = get_insert_index(students, teachVoting.lower())
                 index = getindex[0]
                 students[index].append(teachers[i][0])
@@ -109,4 +109,5 @@ if len(nonMutualMatches) > 0:
 if len(leftOver) > 0:
     print("\nHere are the remaining that did not vote for each other but have been assigned to each other: ")
     for x in range(len(leftOver)):
-        print(f"Student {leftOver[x][0]} is matched with Teacher {leftOver[x][1]}")
+        print(
+            f"Student {leftOver[x][0]} is matched with Teacher {leftOver[x][1]}")
