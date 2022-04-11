@@ -78,8 +78,7 @@ elif "ln" in operation.lower():
     ln()
 elif "log" in operation.lower() and len(operation) == 3 or operation[3] == "(":
     log()
-# elif (type(operation[3]) is int or type(operation[3]) is float) or "logy" in operation.lower():
-#     logY()
+
 elif operation.lower() == "q":
     pass
     #running = False
