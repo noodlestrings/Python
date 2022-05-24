@@ -1,7 +1,5 @@
 import csv
 
-from black import NewLine
-
 with open(r'csv\names.csv', 'r') as csvFile:
     csv_reader = csv.DictReader(csvFile)
 
