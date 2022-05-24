@@ -1,3 +1,4 @@
 discordbottut/
 .env
 __pycache__/
+*.pyc
