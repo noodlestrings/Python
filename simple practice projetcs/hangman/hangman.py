@@ -12,14 +12,16 @@ with open(
     random_word.pop()
     # print(random_word)
 
-begin_input = input("Press 'S' to start the game: ")
+print("\nYour guesses will be counted - duplicate guesses will not be added to total number of guesses")
+print("\t\t\t     - multiple instances of the same letter will be automatically added and will only count for 1 guess")
+begin_input = input("\n\nPress 'S' to start the game: ")
 if begin_input == "S" or "s":
     print("The word is", len(random_word), "characters long.")
     # print("THE WORD IS", random_word)
 
 usr_word = [" "] * len(random_word)
 # print(usr_word)
-print(random_word)
+# print(random_word)
 
 entered_letters = [" "]
 add_to_entered_letters = True
@@ -30,7 +32,7 @@ while while_control != len(random_word):
     usr_guess = input("Enter a letter: ")
     add_to_entered_letters = True
     for enteredletter in entered_letters:
-        if usr_guess == enteredletter:
+        if usr_guess == enteredletter or len(usr_guess) > 1:
             add_to_entered_letters = False
     if add_to_entered_letters == True:
         entered_letters.append(usr_guess)
@@ -57,7 +59,7 @@ def arrtostr(random_word):
 
 arrtostr_res = arrtostr(random_word)
 print(
-    "Congratulations, you guessed " + arrtostr_res + " in",
+    "Congratulations, you guessed " + "\"" + arrtostr_res + "\"" + " in",
     guessnum,
     "guesses.",
 )
