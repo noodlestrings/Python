@@ -23,7 +23,7 @@ def bubblesort(arr):
         if swapsb == False:
             break
 
-    print("\n\nHere: ", arr1)
+    print(f"\n\nArray sorted in {swapCount} swaps: ", arr1)
 
 
 bubblesort(
