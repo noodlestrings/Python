@@ -1,5 +1,3 @@
-shift key below escape to run code
-
-
-test from sidcup
-test for pulling
+lee pc - shift f10
+macbook - fn shift f10
+sidcup - numpad0s
