@@ -2,7 +2,7 @@ import requests
 from cities import cities
 
 
-with open(r'simple practice projetcs\city temp guessr\key.txt', 'r') as keyFile:
+with open(r"simple practice projetcs/city temp guessr/key.txt", "r") as keyFile:
     api_key = keyFile.readline()
 
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
@@ -17,8 +17,8 @@ def get_city_temp(city):
     x = response.json()
 
     if x["cod"] != "404":
-        weather = x['main']
-        current_temp = weather['temp']
+        weather = x["main"]
+        current_temp = weather["temp"]
         return round(current_temp - 273.15, 2)
     else:
         print(f"{city} not found")
