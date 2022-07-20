@@ -6,7 +6,11 @@ def insertionsort(primArr):
     #     primArr[index] = int(value)
 
     # primArr = [5, 32, 2346, 346, 4, 3243, 3, 3, 223]
-    origPrimArr = primArr.copy()
+    
+    if primArr.count(primArr[0]) == len(primArr):
+        return primArr
+
+    #origPrimArr = primArr.copy()
     sortedArr = ["placeholder"]
     sortedArr[0] = primArr[0]
     primArr.pop(0)
