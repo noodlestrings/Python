@@ -19,7 +19,7 @@ def bubblesort(arr1):
                 arr1[item + 1] = swapForward
                 swapsb = True
                 swapCount += 1
-                print(arr1, "swap", swapCount)
+                #print(arr1, "swap", swapCount)
         if swapsb == False:
             break
 
