@@ -3,7 +3,7 @@ import unittest
 
 sys.path.append("/Users/sam/Programming/Python/Algorithms")
 from bubblesort import bubblesort
-from InsertionSortIMPROVED import insertionsort
+from InsertionSort import insertionsort
 
 
 class TestCalc(unittest.TestCase):
