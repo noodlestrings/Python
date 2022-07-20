@@ -7,8 +7,7 @@ def insertionsort(primArr):
 
     # primArr = [5, 32, 2346, 346, 4, 3243, 3, 3, 223]
     
-    if primArr.count(primArr[0]) == len(primArr):
-        return primArr
+
 
     #origPrimArr = primArr.copy()
     sortedArr = ["placeholder"]
@@ -20,6 +19,8 @@ def insertionsort(primArr):
             sortedArr.insert(0, unsortedItem)
         elif unsortedItem > sortedArr[len(sortedArr) - 1]:
             sortedArr.insert(len(sortedArr), unsortedItem)
+        elif unsortedItem == sortedArr[0]:
+            sortedArr.insert(0, unsortedItem)
         else:
             for sortedIndex in range(1, len(sortedArr)):
                 if unsortedItem == sortedArr[sortedIndex]:
