@@ -1,9 +1,10 @@
 def bubblesort(arr):
-    arr1 = arr.split()  # allows for multiple digit nums
+    # INPUT SANITISATION
+    # arr1 = arr.split()  # allows for multiple digit nums
 
-    # split casts values to strs
-    for index, value in enumerate(arr1):
-        arr1[index] = int(value)
+    # # split casts values to strs
+    # for index, value in enumerate(arr1):
+    #     arr1[index] = int(value)
 
     swapCount = 0
     swapsb = True
